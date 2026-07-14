@@ -348,7 +348,7 @@ defiance-capital-assessment/
 
 ## 9. Authentication
 
-The original template includes a seed user (`test@meblabs.com` / `testtest`). For this build, authentication is **optional** and considered out of scope unless time permits. If implemented, use a simple hardcoded credential check or lightweight JWT.
+The original assessment template provided demo credentials for testing. This build does **not** implement authentication. If added later, use a simple hardcoded credential check or a lightweight JWT.
 
 **Decision:** Skip auth for the 1–2h MVP to focus on CRUD functionality.
 
