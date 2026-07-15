@@ -62,6 +62,7 @@ export function TransactionTable({
           key: 'amount',
           width: 140,
           align: 'right',
+          sorter: (a: Transaction, b: Transaction) => a.amount - b.amount,
           render: (amount: number, row: Transaction) => (
             <span style={{ color: typeColor[row.type] === 'green' ? '#16a34a' : '#dc2626', fontWeight: 600 }}>
               {row.type === 'expense' ? '−' : '+'}

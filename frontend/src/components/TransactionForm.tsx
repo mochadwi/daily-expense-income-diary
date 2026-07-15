@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import {
   Modal,
   Form,
@@ -68,14 +67,6 @@ export function TransactionForm({
 }: TransactionFormProps) {
   const [form] = Form.useForm<TransactionFormValues>();
 
-  // Reset the form whenever it opens so stale values never bleed across
-  // create/edit cycles. AntD's Form doesn't auto-reset on open.
-  useEffect(() => {
-    if (open) {
-      form.setFieldsValue(toFormValues(initial));
-    }
-  }, [open, initial, form]);
-
   const isEdit = initial !== null;
 
   const handleOk = async () => {
@@ -106,6 +97,9 @@ export function TransactionForm({
       width={520}
     >
       <Form<TransactionFormValues>
+        // `key` + `Modal destroyOnClose` force the form to remount whenever
+        // the target transaction changes; `initialValues` then refills it.
+        key={initial?.id ?? 'new'}
         form={form}
         layout="vertical"
         requiredMark

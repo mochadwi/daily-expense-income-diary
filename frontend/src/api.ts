@@ -87,4 +87,3 @@ export const api = {
     request<null>(`/transactions/${id}`, { method: 'DELETE' }) as Promise<null>,
 };
 
-export { API_BASE };

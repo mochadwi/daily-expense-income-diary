@@ -46,6 +46,14 @@ export default function App() {
   // `message` inherits the ConfigProvider theme tokens.
   const { message } = AntApp.useApp();
 
+  // What the dev URL the browser actually hits. With VITE_API_URL set
+  // we use an absolute URL; without it Vite's dev proxy serves /api.
+  const apiDisplayUrl = (() => {
+    const raw = import.meta.env.VITE_API_URL;
+    if (raw) return raw.replace(/\/$/, '');
+    return 'localhost:5173 (dev proxy → /api → localhost:3001)';
+  })();
+
   const [filters, setFilters] = useState<FilterValues>(DEFAULT_FILTERS);
   const [data, setData] = useState<Transaction[]>([]);
   const [loading, setLoading] = useState(false);
@@ -225,7 +233,7 @@ export default function App() {
 
       <Footer style={{ textAlign: 'center', background: 'transparent' }}>
         <Text type="secondary">
-          Built with React, Vite, and Ant Design · API at localhost:3001
+          Built with React, Vite, and Ant Design · API: {apiDisplayUrl}
         </Text>
       </Footer>
 
