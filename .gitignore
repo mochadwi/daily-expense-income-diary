@@ -34,6 +34,11 @@ Thumbs.db
 *.sqlite
 *.sqlite3
 *.db
+*.db-shm
+*.db-wal
+
+# API runtime data directory (SQLite DB lives here)
+api/data/
 
 # Vite
 .vite/
