@@ -40,5 +40,8 @@ Thumbs.db
 # API runtime data directory (SQLite DB lives here)
 api/data/
 
+# Internal notes (not for the public repo)
+ONBOARDING.md
+
 # Vite
 .vite/
